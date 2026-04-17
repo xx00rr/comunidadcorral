@@ -1,0 +1,10 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.unit_list, name='unit_list'),
+    path('nueva/', views.unit_create, name='unit_create'),
+    path('<int:pk>/', views.unit_detail, name='unit_detail'),
+    path('<int:pk>/editar/', views.unit_edit, name='unit_edit'),
+    path('<int:pk>/eliminar/', views.unit_delete, name='unit_delete'),
+]

@@ -1,0 +1,8 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn comunidadcorral.wsgi --log-file -"
+healthcheckPath = "/login/"
+healthcheckTimeout = 300
+restartPolicyType = "on_failure"

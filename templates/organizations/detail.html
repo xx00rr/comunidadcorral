@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{ org.name }}{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h5 class="fw-bold mb-0">Organización</h5>
+  {% if user.is_org_admin or user.is_superuser %}
+  <a href="{% url 'org_edit' %}" class="btn btn-outline-secondary btn-sm">Editar</a>
+  {% endif %}
+</div>
+<div class="card border-0 bg-white p-3" style="max-width:480px">
+  <dl class="row small mb-0">
+    <dt class="col-sm-4 text-secondary">Nombre</dt><dd class="col-sm-8">{{ org.name }}</dd>
+    <dt class="col-sm-4 text-secondary">Slug</dt><dd class="col-sm-8"><code>{{ org.slug }}</code></dd>
+    {% if org.address %}<dt class="col-sm-4 text-secondary">Dirección</dt><dd class="col-sm-8">{{ org.address }}</dd>{% endif %}
+    {% if org.contact_email %}<dt class="col-sm-4 text-secondary">Email</dt><dd class="col-sm-8">{{ org.contact_email }}</dd>{% endif %}
+    {% if org.contact_phone %}<dt class="col-sm-4 text-secondary">Teléfono</dt><dd class="col-sm-8">{{ org.contact_phone }}</dd>{% endif %}
+  </dl>
+</div>
+{% endblock %}
